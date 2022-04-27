@@ -28,12 +28,12 @@ const posts = {
     const posts = await Post.find();
     const id = url.split('/').pop();
     const index = posts.findIndex(element => element._id == id);
-    if(index !== -1) {
+    if(index !== -1 && data.content) {
       await Post.findByIdAndDelete(id);
       const posts = await Post.find();
       success(res, posts);
     } else {
-      fail(res, 'id 不匹配');
+      fail(res, 'id 不匹配 or 未填寫貼文內容');
     }
   },
   async changePost({ body, req, res }) {
