@@ -28,7 +28,7 @@ const posts = {
     const posts = await Post.find();
     const id = url.split('/').pop();
     const index = posts.findIndex(element => element._id == id);
-    if(index !== -1 && data.content) {
+    if(index !== -1) {
       await Post.findByIdAndDelete(id);
       const posts = await Post.find();
       success(res, posts);
@@ -43,7 +43,7 @@ const posts = {
       const posts = await Post.find();
       const id = url.split('/').pop();
       const index = posts.findIndex(element => element._id == id);
-      if(index !== -1) {
+      if(index !== -1 && data.content) {
         await Post.findByIdAndUpdate(id, data);
         const posts = await Post.findById(id);
         success(res,posts);
