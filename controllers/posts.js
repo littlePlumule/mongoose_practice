@@ -33,7 +33,7 @@ const posts = {
       const posts = await Post.find();
       success(res, posts);
     } else {
-      fail(res, 'id 不匹配 or 未填寫貼文內容');
+      fail(res, 'id 不匹配');
     }
   },
   async changePost({ body, req, res }) {
@@ -48,7 +48,7 @@ const posts = {
         const posts = await Post.findById(id);
         success(res,posts);
       } else {
-        fail(res, 'id 不匹配');
+        fail(res, 'id 不匹配 or 未填寫貼文內容');
       }
     } catch(error) {
       fail(res, '格式錯誤 or 欄位未填寫正確')
